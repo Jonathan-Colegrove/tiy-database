@@ -1,6 +1,6 @@
 # future updates:  add case-insensitive search feature
 class Person
-    attr_accessor :name, :phone, :address, :position, :salary, :slack, :github
+  attr_accessor :name, :phone, :address, :position, :salary, :slack, :github
 end
 
 class Functions
@@ -83,11 +83,11 @@ class Functions
               Slack ID = #{person.slack}
               Github ID = #{person.github}"
         return
-      else
-        puts "Sorry, #{search_name} isn't in our database.
-              Have them add their details to become searchable."
       end
     end
+
+    puts "Sorry, #{search_name} isn't in our database.
+          Have them add their details to become searchable."
   end
 
   def delete
@@ -100,11 +100,12 @@ class Functions
       for person in @database
         if person.name == delete_name
           puts "#{person.name} & all their info. has been deleted."
-          person.name = nil
-        else
-          puts "Looks like you're 1 step ahead of us! #{delete_name} isn't in our database."
+          @database.delete(person)
+          return
         end
       end
+
+      puts "Looks like you're 1 step ahead of us! #{delete_name} isn't in our database."
     end
   end
 end
